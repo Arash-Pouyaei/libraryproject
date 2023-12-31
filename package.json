@@ -1,5 +1,5 @@
 {
-  "name": "demo",
+  "name": "app2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -51,8 +51,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "devextreme-themebuilder": "^23.1.6"
   }
 }
