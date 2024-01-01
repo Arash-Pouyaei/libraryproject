@@ -6,6 +6,8 @@ import Register from "./components/login/Register";
 import {UserPanel} from "./components/login/PanelUser";
 import { Cart } from "./components/Cart";
 import { EditInformation } from "./components/EditInformation";
+import UserActivity from "./components/admin/UserActivity";
+
 
 
 export const routes = [
@@ -24,6 +26,11 @@ export const routes = [
                         path:"/adminpanel",
                         label:"adminpanel",
                         component:AdminPanel,
+                    },
+                    {
+                        path:"/usersActivity",
+                        label:"usersActivity",
+                        component:UserActivity,
                     }
                 ]
             },

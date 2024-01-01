@@ -42,6 +42,9 @@ const ProductTable = () => {
                 <button class="btn btn-primary" onClick={t =>{localStorage.clear();navigate('/admin')}}>
                     log out
                 </button>
+                <button class="btn btn-primary"  onClick={t =>{navigate('/admin/usersActivity')}}>
+                    users Activity
+                </button>
             </div>
             <div class=" table-responsive mb-5">
 
