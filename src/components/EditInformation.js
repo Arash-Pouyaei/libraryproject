@@ -12,7 +12,7 @@ export const EditInformation = () => {
     const navigate=useNavigate()
     const local = JSON.parse(localStorage.getItem('user'));
     const user = useSelector(store => store.userState);
-    const filteredUser = user.filter(i => i.mobileNo === local.mobileNo);
+    const filteredUser = user.filter(i => i.userId === local.userId);
 
   return (
     <>
@@ -34,8 +34,10 @@ export const EditInformation = () => {
               mobileNo:Yup.string().required("required")
             })}
             onSubmit={(values)=>{
-                dispatch(editUser(Item,values))
-                navigate('/login/register/userpanel')
+                dispatch(editUser(Item.userId,values))
+                localStorage.clear()
+                localStorage.setItem("user",JSON.stringify({userId:Item.userId,firstName:values.firstName,lastName:values.lastName,email:values.email,mobileNo:values.mobileNo}))
+                navigate(-1)
           }}
             >
             <Form>

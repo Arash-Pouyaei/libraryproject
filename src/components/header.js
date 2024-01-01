@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter as Link, NavLink} from 'react-router-dom';
 
-export const Header = ({appRoutes}) => {
+export const Header = () => {
     return (
         <>
             <div class="container-fluid">
@@ -13,7 +13,6 @@ export const Header = ({appRoutes}) => {
                             <NavLink class="text-dark" to="/">Home</NavLink>
                             <span >|</span>
                             <NavLink  to="/admin">admin</NavLink>
-                        
                         </div>
                     </div>
                 </div>
