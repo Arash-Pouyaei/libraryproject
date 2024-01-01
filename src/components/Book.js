@@ -3,13 +3,15 @@ import { useSelector , useDispatch } from 'react-redux'
 import { addCart, editCart } from '../state-management/action/cartAction'
 import { NavLink } from 'react-router-dom'
 import React, { useState } from 'react';
+import { redirect,useNavigate, Navigate} from 'react-router-dom';
 
 export const Book = () => {
   const datas = useSelector(store => store.ProuductState)
   const dispatch = useDispatch() 
 
   const [searchQuery, setSearchQuery] = useState('');
-
+  const [login,setlogin] = useState(JSON.parse(localStorage.getItem('user')))
+  const navigate=useNavigate()
   const filteredProducts = datas.filter(item =>
     item.productName.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -33,7 +35,12 @@ export const Book = () => {
               </div>
             </div>
             <div className="card-footer d-flex justify-content-between bg-light border">
-              <a
+              {
+                              
+                 login?
+                 <a
+
+
                 onClick={() =>
                   dispatch(
                     addCart(
@@ -47,9 +54,15 @@ export const Book = () => {
                   )
                 }
                 className="btn btn-sm text-dark p-0"
+              
               >
                 Add To Cart
               </a>
+              :
+              <NavLink className="btn btn-sm text-dark p-0" to="/login">please login</NavLink>
+                                
+              }
+              
             </div>
           </div>
         </div>
