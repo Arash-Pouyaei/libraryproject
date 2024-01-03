@@ -1,3 +1,9 @@
+const dateObj = new Date();
+const month   = dateObj.getUTCMonth() + 1
+const day     = dateObj.getUTCDate();
+const year    = dateObj.getUTCFullYear();
+
+const newDate = `${year}/${month}/${day}`;
 const data =[
     {
         file:null,
@@ -6,7 +12,6 @@ const data =[
         productName:"ketab",
         productPrice:7,
         quantity:5,
-        purchaseDate: new Date()
     },
     {
       file:null,
@@ -15,7 +20,6 @@ const data =[
       productName:"book",
       productPrice:12,
       quantity:7,
-      purchaseDate: new Date()
   },
 ]
 
