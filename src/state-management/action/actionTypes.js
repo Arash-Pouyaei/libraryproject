@@ -8,8 +8,6 @@ export const ADD_ADMINS = "ADD_ADMINS";
 export const ADD_USERS = "ADD_USERS";
 export const REMOVE_USERS = "REMOVE_USERS";
 export const EDIT_USERS = "EDIT_USERS";
-// ===========cart===========
 export const ADD_CART= "ADD_CART";
 export const REMOVE_CART = "REMOVE_CART";
-export const EDIT_CART= "EDIT_CART";
 

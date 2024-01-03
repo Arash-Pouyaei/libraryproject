@@ -1,16 +1,17 @@
 
 import { useSelector , useDispatch } from 'react-redux'
-import { addCart, editCart } from '../state-management/action/cartAction'
+import { add_cart, remove_cart } from '../state-management/action/UsersAction'
 import { NavLink } from 'react-router-dom'
 import React, { useState } from 'react';
 import { redirect,useNavigate, Navigate} from 'react-router-dom';
 
 export const Book = () => {
   const datas = useSelector(store => store.ProuductState)
+  const users = useSelector(store => store.userState)
   const dispatch = useDispatch() 
-
   const [searchQuery, setSearchQuery] = useState('');
   const [login,setlogin] = useState(JSON.parse(localStorage.getItem('user')))
+  const [userId,setuser] = useState(login===null?"":login.userId) 
   const navigate=useNavigate()
   const filteredProducts = datas.filter(item =>
     item.productName.toLowerCase().includes(searchQuery.toLowerCase())
@@ -41,16 +42,9 @@ export const Book = () => {
                  <a
 
 
-                onClick={() =>
+                onClick={() => 
                   dispatch(
-                    addCart(
-                      datas.find(
-                        i =>
-                          i.productName === item.productName &&
-                          i.productPrice === item.productPrice &&
-                          i.productType === item.productType
-                      )
-                    )
+                    add_cart(item,userId)
                   )
                 }
                 className="btn btn-sm text-dark p-0"

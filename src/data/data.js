@@ -1,5 +1,3 @@
-
-
 const data =[
     {
         file:null,
@@ -21,22 +19,20 @@ const data =[
   },
 ]
 
-const cart = []
-
-
-
 const admins = [{
     username:"aaa",
     email:"a@a.com",
     password:"123asdASD"
 }]
- const users =[{
+
+ const users = [{
     userId:1,
     firstName: 'aaa',
     lastName: 'a',
     email: 'a@a.com',
     mobileNo: '123',
     password: '123asdASD',
+    cart : []
  },{
     userId:2,
     firstName: 'oo',
@@ -44,6 +40,7 @@ const admins = [{
     email: 'ad@ff.com',
     mobileNo: '12345',
     password: '1234dfhGGJ',
+    cart : []
  },{
     userId:3,
     firstName: 'iii',
@@ -51,5 +48,7 @@ const admins = [{
     email: 'i@r.com',
     mobileNo: '67879',
     password: 'gujgGHKGKJ8890',
+    cart : []
  }]
-export {data,admins,users,cart};
+
+export {data,admins,users};

@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {removeCart} from "../state-management/action/cartAction"
+import {remove_cart} from "../state-management/action/UsersAction"
 export const Cart = () => {
-    const cart = useSelector(store=>store.CartState)
+    const users = useSelector(store=>store.userState)
+    const [login,setlogin] = useState(JSON.parse(localStorage.getItem('user')))
+    const user = users.filter(i=>i.userId===login.userId)
+    const cart = user[0].cart
     const dispatch = useDispatch()
   return (
     <>
@@ -34,7 +37,7 @@ export const Cart = () => {
                                     <td className="align-middle">{item.purchaseDate.toLocaleString()}</td>
                                     <td class="align-middle"><img src="img/product-3.jpg" alt="" style={{width: "50px"}}/>{item.productName}</td>
                                     <td class="align-middle">{item.productPrice}</td>
-                                    <td class="align-middle"><button class="btn btn-sm btn-primary" onClick={a=>dispatch(removeCart(item.productId))}><i class="fa fa-times"></i></button></td>
+                                    <td class="align-middle"><button class="btn btn-sm btn-primary" onClick={a=>dispatch(remove_cart(login.userId,item.productId))}><i class="fa fa-times"></i></button></td>
                                 </tr>
                                 ))
                             
