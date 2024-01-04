@@ -11,7 +11,6 @@ const data =[
         productType:"ketab",
         productName:"ketab",
         productPrice:7,
-        quantity:5,
     },
     {
       file:null,
@@ -19,7 +18,6 @@ const data =[
       productType:"book",
       productName:"book",
       productPrice:12,
-      quantity:7,
   },
 ]
 

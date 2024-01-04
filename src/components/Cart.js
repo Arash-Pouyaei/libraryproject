@@ -18,6 +18,7 @@ export const Cart = () => {
                     <thead class="bg-secondary text-dark">
                         <tr>
                             <th>Date</th>
+                            <th>Lastdate</th>
                             <th>Products</th>
                             <th>Price</th>
                             <th>Remove</th>
@@ -34,7 +35,8 @@ export const Cart = () => {
                             :
                                 cart.map(item=>(
                                     <tr>
-                                    <td className="align-middle">{item.purchaseDate.toLocaleString()}</td>
+                                    <td className="align-middle">{item.date}</td>
+                                    <td className="align-middle">{item.lastdate}</td>
                                     <td class="align-middle"><img src="img/product-3.jpg" alt="" style={{width: "50px"}}/>{item.productName}</td>
                                     <td class="align-middle">{item.productPrice}</td>
                                     <td class="align-middle"><button class="btn btn-sm btn-primary" onClick={a=>dispatch(remove_cart(login.userId,item.productId))}><i class="fa fa-times"></i></button></td>

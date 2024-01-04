@@ -10,7 +10,7 @@ export const UserReducer = function(state=users, action){
         case EDIT_USERS:
             return [...state.filter((i)=>i.userId !== action.payload.userId),action.payload.values]
         case ADD_CART:{
-            action.payload.item["quantities"]=action.payload.quantities
+            action.payload.item["days"]=action.payload.days
             action.payload.item["date"]=action.payload.newDate
             action.payload.item["lastdate"]=action.payload.lastdate
             return state.map((user) =>
@@ -23,6 +23,7 @@ export const UserReducer = function(state=users, action){
                 user.userId === action.payload.userId
                 ? { ...user, cart: [...user.cart.filter(i=>i.productId!==action.payload.productId)] }
                 : user
+                
             );
         default:
             return state;

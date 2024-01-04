@@ -10,19 +10,15 @@ export const Book = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [login, setLogin] = useState(JSON.parse(localStorage.getItem('user')));
   const [userId, setUserId] = useState(login === null ? '' : login.userId);
-  const [quantities, setQuantities] = useState({});
-  const [dateObj,setdateObj] = useState(new Date());
-  const [month,setmonth] = useState(dateObj.getUTCMonth() + 1);
-  const [day,setday] = useState(dateObj.getUTCDate());
-  const [year,setyear] = useState(dateObj.getUTCFullYear());
-  const [newDate,setnewDate] = useState(`${year}/${month}/${day}`);
-  const [lastdate,setlastdate] = useState(0)
+  const [days, setdays] = useState({});
+  const [date,setdate] = useState(new Date());
+  const [lastdate,setlastdate] = useState(new Date())
   const filteredProducts = datas.filter((item) =>
     item.productName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleAddToCart = (item) => {
-    dispatch(add_cart(item , userId , quantities[item.productId] , newDate , lastdate ))
+    dispatch(add_cart(item , userId , days[item.productId] , date.toISOString().split('T')[0] , lastdate.toISOString().split('T')[0] ))
   };
 
   return (
@@ -46,10 +42,10 @@ export const Book = () => {
               {login ? (
                 <button
                   onClick={() =>{
-                    setlastdate(`${year}/${month}/${day+quantities[item.productId]}`);
+                    setlastdate(lastdate.setDate(date.getDate() + days[item.productId]));
                     setTimeout(() => {
                       handleAddToCart(item);
-                    }, 1000);
+                    }, 1);
                       }
                     }
                   className="btn btn-sm text-dark p-0"
@@ -69,9 +65,9 @@ export const Book = () => {
                       className="btn btn-sm btn-primary btn-minus"
                       onClick={() => {
 
-                        setQuantities((prevQuantities) => ({
-                          ...prevQuantities,
-                          [item.productId]: Math.max((prevQuantities[item.productId] || 1) - 1, 1),
+                        setdays((prevdays) => ({
+                          ...prevdays,
+                          [item.productId]: Math.max((prevdays[item.productId] || 1) - 1, 1),
                         }));
                       }}
                     >
@@ -82,16 +78,16 @@ export const Book = () => {
                     type="text"
                     className="form-control form-control-sm bg-secondary text-center"
                   >
-                    {quantities[item.productId] || 1}
+                    {days[item.productId] || 1}
                   </p>
                   <div className="input-group-btn">
                     <button
                       className="btn btn-sm btn-primary btn-plus"
                       onClick={() => {
 
-                        setQuantities((prevQuantities) => ({
-                          ...prevQuantities,
-                          [item.productId]: (prevQuantities[item.productId] || 1) + 1,
+                        setdays((prevdays) => ({
+                          ...prevdays,
+                          [item.productId]: (prevdays[item.productId] || 1) + 1,
                         }));
                       }}
                     >
