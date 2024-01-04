@@ -17,9 +17,18 @@ export const Book = () => {
     item.productName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const [disabledButtons, setDisabledButtons] = useState({});
   const handleAddToCart = (item) => {
-    dispatch(add_cart(item , userId , days[item.productId] || 1 , date.toISOString().split('T')[0] , lastdate.toISOString().split('T')[0] ))
+    if (!disabledButtons[item.productId]) {
+      setDisabledButtons((prevDisabled) => ({
+        ...prevDisabled,
+        [item.productId]: true,
+      }));
+
+      dispatch(add_cart(item , userId , days[item.productId] || 1 , date.toISOString().split('T')[0] , lastdate.toISOString().split('T')[0] ))
+    }
   };
+
 
   return (
     <>
@@ -66,6 +75,8 @@ export const Book = () => {
                       
                       }
                     }
+                    
+                  disabled={disabledButtons[item.productId]}
                   className="btn btn-sm text-dark p-0"
                 >
                   Add To Cart

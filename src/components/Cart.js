@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {remove_cart} from "../state-management/action/UsersAction"
 export const Cart = () => {
@@ -7,6 +7,17 @@ export const Cart = () => {
     const user = users.filter(i=>i.userId===login.userId)
     const cart = user[0].cart
     const dispatch = useDispatch()
+
+    useEffect(()=>{
+        cart.forEach(item => {
+            if(item.date === item.lastdate){
+                alert('Your time is over');
+                dispatch(remove_cart(login.userId,item.productId));
+            }
+            
+        });
+    },[cart,dispatch,login.userId])
+    
   return (
     <>
     <div>
