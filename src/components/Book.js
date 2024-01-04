@@ -18,7 +18,7 @@ export const Book = () => {
   );
 
   const handleAddToCart = (item) => {
-    dispatch(add_cart(item , userId , days[item.productId] , date.toISOString().split('T')[0] , lastdate.toISOString().split('T')[0] ))
+    dispatch(add_cart(item , userId , days[item.productId] || 1 , date.toISOString().split('T')[0] , lastdate.toISOString().split('T')[0] ))
   };
 
   return (
@@ -42,15 +42,28 @@ export const Book = () => {
               {login ? (
                 <button
                   onClick={() =>{
-                    console.log("i am lastdate",lastdate,"i am date",date);
-                    setlastdate(lastdate.setDate(date.getDate() + days[item.productId]));
+                    
+                    days[item.productId]===undefined?
                     setTimeout(() => {
+                      setdays(days[item.productId]===1)&&
+                      setlastdate(lastdate.setDate(date.getDate() + days[item.productId]));
                       handleAddToCart(item);
                       setTimeout(() => {
                         setdate(new Date())
                         setlastdate(new Date())
                       }, 10);
-                    }, 10);
+                    }, 10)
+                    :
+                    days[item.productId]&&
+                      setTimeout(() => {
+                        setlastdate(lastdate.setDate(date.getDate() + days[item.productId]));
+                        handleAddToCart(item);
+                        setTimeout(() => {
+                          setdate(new Date())
+                          setlastdate(new Date())
+                        }, 10);
+                      }, 10)
+                      
                       }
                     }
                   className="btn btn-sm text-dark p-0"
