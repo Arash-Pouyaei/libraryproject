@@ -42,10 +42,15 @@ export const Book = () => {
               {login ? (
                 <button
                   onClick={() =>{
+                    console.log("i am lastdate",lastdate,"i am date",date);
                     setlastdate(lastdate.setDate(date.getDate() + days[item.productId]));
                     setTimeout(() => {
                       handleAddToCart(item);
-                    }, 1);
+                      setTimeout(() => {
+                        setdate(new Date())
+                        setlastdate(new Date())
+                      }, 10);
+                    }, 10);
                       }
                     }
                   className="btn btn-sm text-dark p-0"

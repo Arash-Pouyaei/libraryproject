@@ -15,9 +15,9 @@ export const editUser = (userId,values) => ({
     payload:{userId,values}
 })
 
-export const add_cart = (item,userId,days,newDate,lastdate) => ({
+export const add_cart = (item,userId,days,date,lastdate) => ({
     type:ADD_CART,
-    payload:{item,userId,days,newDate,lastdate}
+    payload:{item,userId,days,date,lastdate}
 })
 
 export const remove_cart = (userId,productId) => ({

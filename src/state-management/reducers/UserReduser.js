@@ -11,7 +11,7 @@ export const UserReducer = function(state=users, action){
             return [...state.filter((i)=>i.userId !== action.payload.userId),action.payload.values]
         case ADD_CART:{
             action.payload.item["days"]=action.payload.days
-            action.payload.item["date"]=action.payload.newDate
+            action.payload.item["date"]=action.payload.date
             action.payload.item["lastdate"]=action.payload.lastdate
             return state.map((user) =>
                 user.userId === action.payload.userId
