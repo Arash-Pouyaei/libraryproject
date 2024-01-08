@@ -18,8 +18,6 @@ const AdminForm = () => {
                         </>
                            :
                            <>
-                        <button type='button' class="btn btn-primary open" onClick={a => navigate("/")}>Home
-                        </button>
                         <Formik
                             initialValues={{username: "", email: "", password: ""}}
                             validationSchema={Yup.object({

@@ -105,7 +105,7 @@ export const Book = () => {
                   </div>
                   <p
                     type="text"
-                    className="form-control form-control-sm bg-secondary text-center"
+                    className="form-control form-control-sm bg-secondary text-center bg-white"
                   >
                     {days[item.productId] || 1}
                   </p>
@@ -129,7 +129,7 @@ export const Book = () => {
           </div>
         </div>
       ))}
-      <button onClick={a=>console.log(users)}>log</button>
+      {/* <button onClick={a=>console.log(users)}>log</button> */}
     </>
   );
 };

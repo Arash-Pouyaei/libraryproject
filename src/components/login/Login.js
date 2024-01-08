@@ -71,13 +71,13 @@ const Login = () => {
                                             </p>
 
                                             <div class="text-center pt-1 mb-5 pb-1">
-                                                <button  type="submit">Login</button>
+                                                <button className='btn btn-primary py-2 px-4'  type="submit">Login</button>
                                             
                                             </div>
 
                                             <div>
                                                 
-                                                <button type="button" class="btn " onClick={a => navigate("/register")} >Create new</button>
+                                                <button type="button" class="btn btn-primary py-2 px-4 " onClick={a => navigate("/register")} >Create new</button>
                                             </div>
 
                                         </Form>
